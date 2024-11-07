@@ -16,6 +16,7 @@ const Products = () => {
 
     // Function to add or update the item in the cart
     const handelAddtoBag = (product) => {
+        console.log(product);
         const existingItemIndex = cart.Items.findIndex(item => item.id === product.id);
         let updatedItems = [...cart.Items];
         let updatedTotalAmount = cart.TotalAmount;
@@ -27,7 +28,7 @@ const Products = () => {
             updatedTotalAmount += product.MRP; // Increment total amount
         } else {
             // Item is new, add it to the cart
-            const newItem = {
+            const newItem = { 
                 ...product,
                 quantity: 1, // Initialize quantity for new items
             };
@@ -40,15 +41,18 @@ const Products = () => {
         const newCart = { TotalItems: updatedTotalItems, TotalAmount: updatedTotalAmount, Items: updatedItems };
         setCart(newCart);
         localStorage.setItem('cart', JSON.stringify(newCart)); // Save to local storage
-        console.log('gutaihs na vai');
     };
 
     // Function to clear the cart
-    const clearCart = () => {
-        setCart({ TotalItems: 0, TotalAmount: 0, Items: [] }); // Reset cart state
-        localStorage.removeItem('cart'); // Remove cart from local storage
-        console.log('Cart cleared');
-    };
+    // const clearCart = () => {
+    //     setCart({ TotalItems: 0, TotalAmount: 0, Items: [] }); // Reset cart state
+    //     localStorage.removeItem('cart'); // Remove cart from local storage
+    // };
+
+    const clearCart = () =>{
+        setCart({TotalItems:0 , TotalAmount:0, Items:[]});
+        localStorage.removeItem('cart');
+    }
 
     return (
         <div>
@@ -59,7 +63,6 @@ const Products = () => {
                     handelAddtoBag={() => handelAddtoBag(data)} // Pass product data to the handler
                 />
             ))}
-            {/* Optional: Display cart information */}
             <div>
                 <h3>Cart Summary</h3>
                 <p>Total Items: {cart.TotalItems}</p>
