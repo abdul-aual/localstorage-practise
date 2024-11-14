@@ -1,5 +1,4 @@
 import React from 'react';
-
 const CartChild = (props) => {
     const { Nm, stk, MRP, } = props.pdDetails;
 
@@ -10,6 +9,7 @@ const CartChild = (props) => {
                 <small>{stk}-Left in stock. Order soon....</small>
                 <p>Price: {MRP}</p>
                 <button onClick={props.handelAddtoBag}>Add to Bag</button>
+            
 
             </div>
         </div>

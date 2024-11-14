@@ -1,0 +1,72 @@
+.cart-app{
+    display: flex;
+    justify-content: center;
+}
+.add-to-bag-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-size: 16px;
+    width: 150px;
+    height: 40px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 1px solid #0c8542;
+    color: #0c8542;
+    background-color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.add-to-bag-btn:hover {
+    background-color: #0c8542;
+    color: white;
+}
+
+.clicked {
+    background-color: white;
+    color: #0c8542;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.clicked:hover {
+    background-color: white;
+    color: #0c8542;
+}
+
+.qty-btn {
+    background-color: #0c8542;
+    color: white;
+    width: 60%;
+    height: 90%; /* Makes the height cover 90% of the main button */
+    text-align: center;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: default;
+    
+}
+
+.increase-btn, .decrease-btn {
+    width: 20%;
+    height: 100%; /* Match the height of the main button */
+    text-align: center;
+    cursor: pointer;
+    color: #0c8542;
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+
+
+
+

@@ -6,7 +6,7 @@ const Products = () => {
     const [products] = useState(fakedata);
     const [cart, setCart] = useState({ TotalItems: 0, TotalAmount: 0, Items: [] });
 
-    // Load cart from local storage on component mount
+
     useEffect(() => {
         const storedCart = JSON.parse(localStorage.getItem('cart'));
         if (storedCart) {
@@ -14,40 +14,31 @@ const Products = () => {
         }
     }, []);
 
-    // Function to add or update the item in the cart
     const handelAddtoBag = (product) => {
-        console.log(product);
         const existingItemIndex = cart.Items.findIndex(item => item.id === product.id);
         let updatedItems = [...cart.Items];
         let updatedTotalAmount = cart.TotalAmount;
         let updatedTotalItems = cart.TotalItems;
 
         if (existingItemIndex >= 0) {
-            // If the item already exists, increase quantity
-            updatedItems[existingItemIndex].quantity += 1; // Track the quantity
-            updatedTotalAmount += product.MRP; // Increment total amount
+            updatedItems[existingItemIndex].quantity += 1; 
+            updatedTotalAmount += product.MRP; 
         } else {
-            // Item is new, add it to the cart
+    
             const newItem = { 
                 ...product,
-                quantity: 1, // Initialize quantity for new items
+                quantity: 1, 
             };
-            updatedItems.push(newItem); // Add new item to the Items array
-            updatedTotalAmount += product.MRP; // Add MRP to total amount
+            updatedItems.push(newItem); 
+            updatedTotalAmount += product.MRP; 
         }
 
-        updatedTotalItems = updatedItems.length; // Total items is the length of the Items array
+        updatedTotalItems = updatedItems.length; 
 
         const newCart = { TotalItems: updatedTotalItems, TotalAmount: updatedTotalAmount, Items: updatedItems };
         setCart(newCart);
-        localStorage.setItem('cart', JSON.stringify(newCart)); // Save to local storage
+        localStorage.setItem('cart', JSON.stringify(newCart)); 
     };
-
-    // Function to clear the cart
-    // const clearCart = () => {
-    //     setCart({ TotalItems: 0, TotalAmount: 0, Items: [] }); // Reset cart state
-    //     localStorage.removeItem('cart'); // Remove cart from local storage
-    // };
 
     const clearCart = () =>{
         setCart({TotalItems:0 , TotalAmount:0, Items:[]});
@@ -60,14 +51,14 @@ const Products = () => {
                 <CartChild 
                     key={index}  
                     pdDetails={data}
-                    handelAddtoBag={() => handelAddtoBag(data)} // Pass product data to the handler
+                    handelAddtoBag={() => handelAddtoBag(data)} 
                 />
             ))}
             <div>
                 <h3>Cart Summary</h3>
                 <p>Total Items: {cart.TotalItems}</p>
                 <p>Total Amount: {cart.TotalAmount}</p>
-                <button onClick={clearCart}>Clear Cart</button> {/* Button to clear the cart */}
+                <button onClick={clearCart}>Clear Cart</button> 
             </div>
         </div>
     );
